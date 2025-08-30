@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Holiday Data Table</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Holiday Data</h1>
+    <table id="holiday-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Observed</th>
+                <th>Public</th>
+                <th>Country</th>
+                <th>UUID</th>
+                <th>Weekday (Date)</th>
+                <th>Weekday (Observed)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Holiday rows will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Example holiday data
+        const holidays = [];
+
+        const HOLIDAY_DATA = 'https://holidayapi.com/v1/holidays?key=064420ea-8e4f-4dc9-9967-b9f3daf4b07a&country=US&year=2024&pretty'
+
+        const getHolidays = async () => {
+            const response = await fetch(HOLIDAY_DATA);
+            const data = await response.json();
+            for (const holiday of data.holidays) {
+                holidays.push(holiday);
+            }
+            console.log(data);
+
+            holidays.forEach(holiday => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${holiday.name}</td>
+                <td>${holiday.date}</td>
+                <td>${holiday.observed}</td>
+                <td>${holiday.public ? 'Yes' : 'No'}</td>
+                <td>${holiday.country}</td>
+                <td>${holiday.uuid}</td>
+                <td>${holiday.weekday.date.name} (${holiday.weekday.date.numeric})</td>
+                <td>${holiday.weekday.observed.name} (${holiday.weekday.observed.numeric})</td>
+            `;
+            tbody.appendChild(row);
+        });
+        };
+
+        const tbody = document.querySelector('#holiday-table tbody');
+
+        getHolidays();
+    </script>
+</body>
+</html>
