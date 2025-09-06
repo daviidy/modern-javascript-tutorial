@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-enter { transform: translateX(100%); }
+        .sidebar-active { transform: translateX(0); }
+        .overlay-enter { opacity: 0; }
+        .overlay-active { opacity: 1; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-bold text-gray-900">Events Hub</h1>
+                <div class="flex items-center space-x-4">
+                    <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                        Create Event
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-8">
+        <!-- Search and Filter -->
+        <div class="mb-8">
+            <div class="flex flex-col sm:flex-row gap-4 items-center justify-between">
+                <div class="relative flex-1 max-w-md">
+                    <input type="text" placeholder="Search events..." class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    <svg class="absolute left-3 top-3.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <div class="flex gap-2">
+                    <select class="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <option>All Categories</option>
+                        <option>Technology</option>
+                        <option>Business</option>
+                        <option>Arts</option>
+                        <option>Sports</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="eventsGrid">
+            <!-- Event Card 1 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 event-card" onclick="showEventDetails(1)">
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-3 py-1 rounded-full">Technology</span>
+                        <span class="text-sm text-gray-500">Dec 15, 2024</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">AI & Machine Learning Summit</h3>
+                    <p class="text-gray-600 text-sm mb-4">Join industry leaders for insights into the future of artificial intelligence and machine learning technologies.</p>
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        San Francisco, CA
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-purple-600">$299</span>
+                        <span class="text-sm text-green-600 font-medium">234 attending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 2 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 event-card" onclick="showEventDetails(2)">
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">Business</span>
+                        <span class="text-sm text-gray-500">Dec 18, 2024</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Startup Pitch Competition</h3>
+                    <p class="text-gray-600 text-sm mb-4">Watch innovative startups pitch their ideas to top investors and compete for funding opportunities.</p>
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        New York, NY
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-purple-600">Free</span>
+                        <span class="text-sm text-green-600 font-medium">156 attending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 3 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 event-card" onclick="showEventDetails(3)">
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Arts</span>
+                        <span class="text-sm text-gray-500">Dec 20, 2024</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Digital Art Workshop</h3>
+                    <p class="text-gray-600 text-sm mb-4">Learn digital art techniques from professional artists and create your own masterpiece.</p>
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        Los Angeles, CA
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-purple-600">$89</span>
+                        <span class="text-sm text-green-600 font-medium">45 attending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 4 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 event-card" onclick="showEventDetails(4)">
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="bg-orange-100 text-orange-800 text-xs font-medium px-3 py-1 rounded-full">Sports</span>
+                        <span class="text-sm text-gray-500">Dec 22, 2024</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Marathon Training Camp</h3>
+                    <p class="text-gray-600 text-sm mb-4">Intensive training program for marathon runners with professional coaches and nutritionists.</p>
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        Austin, TX
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-purple-600">$199</span>
+                        <span class="text-sm text-green-600 font-medium">78 attending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 overlay-enter transition-opacity duration-300 hidden" onclick="closeSidebar()"></div>
+
+    <!-- Event Details Sidebar -->
+    <div id="eventSidebar" class="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl z-50 sidebar-enter transition-transform duration-300 hidden overflow-y-auto">
+        <div class="p-6">
+            <!-- Close Button -->
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-gray-900">Event Details</h2>
+                <button onclick="closeSidebar()" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Event Content -->
+            <div id="sidebarContent">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const events = {
+            1: {
+                title: "AI & Machine Learning Summit",
+                category: "Technology",
+                date: "December 15, 2024",
+                time: "9:00 AM - 6:00 PM",
+                location: "San Francisco, CA",
+                venue: "Moscone Convention Center",
+                price: "$299",
+                attending: "234",
+                description: "Join industry leaders, researchers, and innovators for a comprehensive exploration of artificial intelligence and machine learning technologies. This summit features keynote presentations, hands-on workshops, and networking opportunities with the brightest minds in AI.",
+                highlights: [
+                    "Keynote by leading AI researchers",
+                    "Hands-on ML workshops",
+                    "Networking with 500+ professionals",
+                    "Latest AI tools and frameworks",
+                    "Panel discussions on AI ethics"
+                ],
+                speakers: [
+                    "Dr. Sarah Chen - Google AI",
+                    "Prof. Michael Rodriguez - Stanford",
+                    "Lisa Wang - OpenAI"
+                ]
+            },
+            2: {
+                title: "Startup Pitch Competition",
+                category: "Business",
+                date: "December 18, 2024",
+                time: "2:00 PM - 8:00 PM",
+                location: "New York, NY",
+                venue: "WeWork Times Square",
+                price: "Free",
+                attending: "156",
+                description: "Watch the next generation of entrepreneurs pitch their innovative ideas to a panel of top-tier investors. This competition showcases groundbreaking startups across various industries, from fintech to healthcare.",
+                highlights: [
+                    "20 selected startups pitching",
+                    "$100K prize pool",
+                    "Panel of 5 renowned VCs",
+                    "Networking with investors",
+                    "Live audience voting"
+                ],
+                speakers: [
+                    "John Smith - Sequoia Capital",
+                    "Maria Garcia - Andreessen Horowitz",
+                    "David Kim - First Round Capital"
+                ]
+            },
+            3: {
+                title: "Digital Art Workshop",
+                category: "Arts",
+                date: "December 20, 2024",
+                time: "10:00 AM - 4:00 PM",
+                location: "Los Angeles, CA",
+                venue: "Art Center College of Design",
+                price: "$89",
+                attending: "45",
+                description: "Immerse yourself in the world of digital art with this intensive workshop. Learn from professional digital artists and explore various techniques using industry-standard software and tools.",
+                highlights: [
+                    "Hands-on digital painting",
+                    "3D modeling basics",
+                    "Professional software training",
+                    "Portfolio review session",
+                    "Take home digital artwork"
+                ],
+                speakers: [
+                    "Alex Thompson - Pixar Artist",
+                    "Rachel Kim - Freelance Illustrator",
+                    "Carlos Martinez - Game Designer"
+                ]
+            },
+            4: {
+                title: "Marathon Training Camp",
+                category: "Sports",
+                date: "December 22, 2024",
+                time: "6:00 AM - 12:00 PM",
+                location: "Austin, TX",
+                venue: "Zilker Park",
+                price: "$199",
+                attending: "78",
+                description: "Intensive marathon training program designed for runners of all levels. Work with professional coaches, learn proper nutrition, and build the endurance needed for your next marathon.",
+                highlights: [
+                    "Professional coaching",
+                    "Nutrition planning",
+                    "Injury prevention techniques",
+                    "Group training runs",
+                    "Performance tracking"
+                ],
+                speakers: [
+                    "Coach Jennifer Adams - Olympic Trainer",
+                    "Dr. Robert Lee - Sports Medicine",
+                    "Nina Patel - Nutritionist"
+                ]
+            }
+        };
+    </script>
+</html>
