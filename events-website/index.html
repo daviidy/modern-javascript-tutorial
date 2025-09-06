@@ -54,105 +54,15 @@
 
         <!-- Events Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="eventsGrid">
-            <!-- Event Card 1 -->
-            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 event-card" onclick="showEventDetails(1)">
-                <div class="p-6">
-                    <div class="flex items-start justify-between mb-4">
-                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-3 py-1 rounded-full">Technology</span>
-                        <span class="text-sm text-gray-500">Dec 15, 2024</span>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">AI & Machine Learning Summit</h3>
-                    <p class="text-gray-600 text-sm mb-4">Join industry leaders for insights into the future of artificial intelligence and machine learning technologies.</p>
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        San Francisco, CA
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-lg font-bold text-purple-600">$299</span>
-                        <span class="text-sm text-green-600 font-medium">234 attending</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Event Card 2 -->
-            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 event-card" onclick="showEventDetails(2)">
-                <div class="p-6">
-                    <div class="flex items-start justify-between mb-4">
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">Business</span>
-                        <span class="text-sm text-gray-500">Dec 18, 2024</span>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Startup Pitch Competition</h3>
-                    <p class="text-gray-600 text-sm mb-4">Watch innovative startups pitch their ideas to top investors and compete for funding opportunities.</p>
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        New York, NY
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-lg font-bold text-purple-600">Free</span>
-                        <span class="text-sm text-green-600 font-medium">156 attending</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Event Card 3 -->
-            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 event-card" onclick="showEventDetails(3)">
-                <div class="p-6">
-                    <div class="flex items-start justify-between mb-4">
-                        <span class="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Arts</span>
-                        <span class="text-sm text-gray-500">Dec 20, 2024</span>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Digital Art Workshop</h3>
-                    <p class="text-gray-600 text-sm mb-4">Learn digital art techniques from professional artists and create your own masterpiece.</p>
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        Los Angeles, CA
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-lg font-bold text-purple-600">$89</span>
-                        <span class="text-sm text-green-600 font-medium">45 attending</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Event Card 4 -->
-            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 event-card" onclick="showEventDetails(4)">
-                <div class="p-6">
-                    <div class="flex items-start justify-between mb-4">
-                        <span class="bg-orange-100 text-orange-800 text-xs font-medium px-3 py-1 rounded-full">Sports</span>
-                        <span class="text-sm text-gray-500">Dec 22, 2024</span>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Marathon Training Camp</h3>
-                    <p class="text-gray-600 text-sm mb-4">Intensive training program for marathon runners with professional coaches and nutritionists.</p>
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        Austin, TX
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-lg font-bold text-purple-600">$199</span>
-                        <span class="text-sm text-green-600 font-medium">78 attending</span>
-                    </div>
-                </div>
-            </div>
+            <!-- Events -->
         </div>
     </main>
 
     <!-- Sidebar Overlay -->
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 overlay-enter transition-opacity duration-300 hidden" onclick="closeSidebar()"></div>
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 overlay-enter transition-opacity duration-300" onclick="closeSidebar()"></div>
 
     <!-- Event Details Sidebar -->
-    <div id="eventSidebar" class="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl z-50 sidebar-enter transition-transform duration-300 hidden overflow-y-auto">
+    <div id="eventSidebar" class="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl z-50 sidebar-enter transition-transform duration-300 overflow-y-auto">
         <div class="p-6">
             <!-- Close Button -->
             <div class="flex justify-between items-center mb-6">
@@ -167,13 +77,77 @@
             <!-- Event Content -->
             <div id="sidebarContent">
                 <!-- Content will be populated by JavaScript -->
+                 <div class="space-y-6">
+                    <div>
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-3 py-1 rounded-full">${event.category}</span>
+                        <h3 class="text-2xl font-bold text-gray-900 mt-3 mb-2">${event.title}</h3>
+                        <p class="text-gray-600">${event.description}</p>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg p-4 space-y-3">
+                        <div class="flex items-center text-sm">
+                            <svg class="w-4 h-4 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="font-medium">${event.date}</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <svg class="w-4 h-4 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>${event.time}</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <svg class="w-4 h-4 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>${event.venue}, ${event.location}</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-3">Event Highlights</h4>
+                        <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <svg class="w-4 h-4 mr-2 mt-0.5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="text-sm text-gray-600">event.highlight</span>
+                                </li>
+
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-3">Featured Speakers</h4>
+                        <div class="space-y-2">
+                                <div class="text-sm text-gray-600">event.speakers</div>
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <div class="text-2xl font-bold text-purple-600">$350</div>
+                                <div class="text-sm text-gray-500">event.attending people attending</div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                            Register Now
+                        </button>
+                        <button class="w-full mt-2 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors">
+                            Add to Calendar
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        const events = {
-            1: {
+        const events = [
+            {
                 title: "AI & Machine Learning Summit",
                 category: "Technology",
                 date: "December 15, 2024",
@@ -196,7 +170,7 @@
                     "Lisa Wang - OpenAI"
                 ]
             },
-            2: {
+            {
                 title: "Startup Pitch Competition",
                 category: "Business",
                 date: "December 18, 2024",
@@ -219,7 +193,7 @@
                     "David Kim - First Round Capital"
                 ]
             },
-            3: {
+            {
                 title: "Digital Art Workshop",
                 category: "Arts",
                 date: "December 20, 2024",
@@ -242,7 +216,7 @@
                     "Carlos Martinez - Game Designer"
                 ]
             },
-            4: {
+            {
                 title: "Marathon Training Camp",
                 category: "Sports",
                 date: "December 22, 2024",
@@ -265,6 +239,6 @@
                     "Nina Patel - Nutritionist"
                 ]
             }
-        };
+        ];
     </script>
 </html>
