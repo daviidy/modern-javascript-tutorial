@@ -8,13 +8,14 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
-        .sidebar-enter { transform: translateX(100%); }
-        .sidebar-active { transform: translateX(0); }
-        .overlay-enter { opacity: 0; }
-        .overlay-active { opacity: 1; }
+        #eventSidebar { transform: translateX(100%); }
+        #eventSidebar.sidebar-active { transform: translateX(0); }
+        #sidebarOverlay{ opacity: 0; pointer-events: none; }
+        #sidebarOverlay.overlay-active { opacity: 1;pointer-events: auto ; }
     </style>
 </head>
 <body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    
     <!-- Header -->
     <header class="bg-white shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6 py-4">
@@ -41,19 +42,20 @@
                     </svg>
                 </div>
                 <div class="flex gap-2">
-                    <select class="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                        <option>All Categories</option>
-                        <option>Technology</option>
-                        <option>Business</option>
-                        <option>Arts</option>
-                        <option>Sports</option>
+                     
+                    <select id="category" class="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <option value="all categories">All Categories</option>
+                        <option value="technology">Technology</option>
+                        <option value="business">Business</option>
+                        <option value="arts">Arts</option>
+                        <option value="sports">Sports</option>
                     </select>
                 </div>
             </div>
         </div>
 
         <!-- Events Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="eventsGrid">
+        <div id="eventsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" >
             <!-- Events -->
         </div>
     </main>
@@ -67,7 +69,7 @@
             <!-- Close Button -->
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-xl font-bold text-gray-900">Event Details</h2>
-                <button onclick="closeSidebar()" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                <button onclick="closeSidebar()" class="p-2 hover:bg-gray-100 rounded-lg transition-colors"> 
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -75,9 +77,104 @@
             </div>
 
             <!-- Event Content -->
-            <div id="sidebarContent">
+            <div id="sidebarContent" class="space-y-6">
                 <!-- Content will be populated by JavaScript -->
-                 <div class="space-y-6">
+            
+        </div>
+    </div>
+
+   <script>
+const events = [
+    {
+        title: "AI & Machine Learning Summit",
+        category: "Technology",
+        date: "December 15, 2024",
+        time: "9:00 AM - 6:00 PM",
+        location: "San Francisco, CA",
+        venue: "Moscone Convention Center",
+        price: "$299",
+        attending: "234",
+        description: "Join industry leaders, researchers, and innovators for a comprehensive exploration of artificial intelligence and machine learning technologies.",
+        highlights: ["Keynote by leading AI researchers","Hands-on ML workshops","Networking with 500+ professionals"],
+        speakers: ["Dr. Sarah Chen - Google AI","Prof. Michael Rodriguez - Stanford"]
+    },
+    {
+        title: "Startup Pitch Competition",
+        category: "Business",
+        date: "December 18, 2024",
+        time: "2:00 PM - 8:00 PM",
+        location: "New York, NY",
+        venue: "WeWork Times Square",
+        price: "Free",
+        attending: "156",
+        description: "Watch the next generation of entrepreneurs pitch their innovative ideas to top investors.",
+        highlights: ["20 selected startups pitching","$100K prize pool","Panel of 5 renowned VCs"],
+        speakers: ["John Smith - Sequoia Capital","Maria Garcia - Andreessen Horowitz"]
+    },
+    {
+        title: "Digital Art Workshop",
+        category: "Arts",
+        date: "December 20, 2024",
+        time: "10:00 AM - 4:00 PM",
+        location: "Los Angeles, CA",
+        venue: "Art Center College of Design",
+        price: "$89",
+        attending: "45",
+        description: "Immerse yourself in the world of digital art with this intensive workshop.",
+        highlights: ["Hands-on digital painting","3D modeling basics","Portfolio review session"],
+        speakers: ["Alex Thompson - Pixar Artist","Rachel Kim - Freelance Illustrator"]
+    },
+    {
+        title: "Marathon Training Camp",
+        category: "Sports",
+        date: "December 22, 2024",
+        time: "6:00 AM - 12:00 PM",
+        location: "Austin, TX",
+        venue: "Zilker Park",
+        price: "$199",
+        attending: "78",
+        description: "Intensive marathon training program designed for runners of all levels.",
+        highlights: ["Professional coaching","Nutrition planning","Group training runs"],
+        speakers: ["Coach Jennifer Adams - Olympic Trainer","Dr. Robert Lee - Sports Medicine"]
+    }
+];
+
+const eventsGrid = document.getElementById("eventsGrid");
+const categorySelect = document.getElementById("category");
+const sidebar = document.getElementById("eventSidebar");
+const overlay = document.getElementById("sidebarOverlay");
+const sidebarContent = document.getElementById("sidebarContent");
+
+// Afficher les événements
+function displayEvents(filter) {
+    
+    for (let i = 0; i < events.length; i++) {
+         
+        const event = events[i];
+        if (filter === "all categories"    || event.category.toLowerCase() === filter.toLowerCase()) {
+            const card = document.createElement("div");
+            card.className = "bg-white rounded-xl shadow hover:shadow-lg transition p-5 cursor-pointer";
+            card.innerHTML = `
+                <span class="text-sm px-3 py-1 rounded-full bg-purple-100 text-purple-600">${event.category}</span>
+                <h3 class="text-lg font-semibold mt-3 mb-2">${event.title}</h3>
+                <p class="text-black text-sm">📅 ${event.date}  🕒 ${event.time}</p>
+                <p class="text-black text-sm"> ${event.venue}, ${event.location}</p>
+                 <p class="  text-sm ">${event.price }</p>
+               
+            `;
+            card.addEventListener("click", () => openSidebar(event));
+            eventsGrid.appendChild(card);
+        }
+    }
+    if (eventsGrid.innerHTML === "") {
+        eventsGrid.innerHTML = `<p class="text-gray-500 col-span-full text-center">Aucun événement trouvé.</p>`;
+    }
+}
+
+// Ouvrir la sidebar
+function openSidebar(event) {
+    sidebarContent.innerHTML = `
+             <div class="space-y-6">
                     <div>
                         <span class="bg-purple-100 text-purple-800 text-xs font-medium px-3 py-1 rounded-full">${event.category}</span>
                         <h3 class="text-2xl font-bold text-gray-900 mt-3 mb-2">${event.title}</h3>
@@ -142,103 +239,23 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+    `;
+    // open the sidebar
+    sidebar.classList.add("sidebar-active");
+    overlay.classList.add("overlay-active");
+}
 
-    <script>
-        const events = [
-            {
-                title: "AI & Machine Learning Summit",
-                category: "Technology",
-                date: "December 15, 2024",
-                time: "9:00 AM - 6:00 PM",
-                location: "San Francisco, CA",
-                venue: "Moscone Convention Center",
-                price: "$299",
-                attending: "234",
-                description: "Join industry leaders, researchers, and innovators for a comprehensive exploration of artificial intelligence and machine learning technologies. This summit features keynote presentations, hands-on workshops, and networking opportunities with the brightest minds in AI.",
-                highlights: [
-                    "Keynote by leading AI researchers",
-                    "Hands-on ML workshops",
-                    "Networking with 500+ professionals",
-                    "Latest AI tools and frameworks",
-                    "Panel discussions on AI ethics"
-                ],
-                speakers: [
-                    "Dr. Sarah Chen - Google AI",
-                    "Prof. Michael Rodriguez - Stanford",
-                    "Lisa Wang - OpenAI"
-                ]
-            },
-            {
-                title: "Startup Pitch Competition",
-                category: "Business",
-                date: "December 18, 2024",
-                time: "2:00 PM - 8:00 PM",
-                location: "New York, NY",
-                venue: "WeWork Times Square",
-                price: "Free",
-                attending: "156",
-                description: "Watch the next generation of entrepreneurs pitch their innovative ideas to a panel of top-tier investors. This competition showcases groundbreaking startups across various industries, from fintech to healthcare.",
-                highlights: [
-                    "20 selected startups pitching",
-                    "$100K prize pool",
-                    "Panel of 5 renowned VCs",
-                    "Networking with investors",
-                    "Live audience voting"
-                ],
-                speakers: [
-                    "John Smith - Sequoia Capital",
-                    "Maria Garcia - Andreessen Horowitz",
-                    "David Kim - First Round Capital"
-                ]
-            },
-            {
-                title: "Digital Art Workshop",
-                category: "Arts",
-                date: "December 20, 2024",
-                time: "10:00 AM - 4:00 PM",
-                location: "Los Angeles, CA",
-                venue: "Art Center College of Design",
-                price: "$89",
-                attending: "45",
-                description: "Immerse yourself in the world of digital art with this intensive workshop. Learn from professional digital artists and explore various techniques using industry-standard software and tools.",
-                highlights: [
-                    "Hands-on digital painting",
-                    "3D modeling basics",
-                    "Professional software training",
-                    "Portfolio review session",
-                    "Take home digital artwork"
-                ],
-                speakers: [
-                    "Alex Thompson - Pixar Artist",
-                    "Rachel Kim - Freelance Illustrator",
-                    "Carlos Martinez - Game Designer"
-                ]
-            },
-            {
-                title: "Marathon Training Camp",
-                category: "Sports",
-                date: "December 22, 2024",
-                time: "6:00 AM - 12:00 PM",
-                location: "Austin, TX",
-                venue: "Zilker Park",
-                price: "$199",
-                attending: "78",
-                description: "Intensive marathon training program designed for runners of all levels. Work with professional coaches, learn proper nutrition, and build the endurance needed for your next marathon.",
-                highlights: [
-                    "Professional coaching",
-                    "Nutrition planning",
-                    "Injury prevention techniques",
-                    "Group training runs",
-                    "Performance tracking"
-                ],
-                speakers: [
-                    "Coach Jennifer Adams - Olympic Trainer",
-                    "Dr. Robert Lee - Sports Medicine",
-                    "Nina Patel - Nutritionist"
-                ]
-            }
-        ];
-    </script>
+// close the sidebar
+function closeSidebar() {
+    sidebar.classList.remove("sidebar-active");
+    overlay.classList.remove("overlay-active");
+}
+
+// Initialisation
+displayEvents("all categories");
+
+// Filtrage
+categorySelect.addEventListener("change", (e) => displayEvents(e.target.value));
+</script>
+    </body>
 </html>
