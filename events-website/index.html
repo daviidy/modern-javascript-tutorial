@@ -219,6 +219,8 @@ const categorySelect = document.getElementById("category");
 const sidebar = document.getElementById("eventSidebar");
 const overlay = document.getElementById("sidebarOverlay");
 const sidebarContent = document.getElementById("sidebarContent");
+const createEventModal = document.getElementById("createEventModal");
+const form = document.getElementById('createEventForm')
 
 // Afficher les événements
 function displayEvents(filter) {
@@ -331,6 +333,58 @@ displayEvents("all categories");
 
 // Filtrage
 categorySelect.addEventListener("change", (e) => displayEvents(e.target.value));
+
+
+// Creating Pop-up
+// Creating Pop-up
+// Ouvrir le modal "Create Event"
+document.querySelector("header button").addEventListener("click", openCreateEventModal);
+
+function openCreateEventModal() {
+    createEventModal.classList.remove("hidden");
+}
+
+function closeCreateEventModal() {
+    createEventModal.classList.add("hidden");
+}
+
+// Soumission du formulaire "Create Event"
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+    const newEvent = {
+        title: document.getElementById("eventTitle").value,
+        category: document.getElementById("eventCategory").value,
+        date: document.getElementById("eventDate").value,
+        time: document.getElementById("eventTime").value,
+        location: document.getElementById("eventLocation").value,
+        venue: document.getElementById("eventVenue").value,
+        price: document.getElementById("eventPrice").value,
+        description: document.getElementById("eventDescription").value,
+        attending: "0", // par défaut
+        highlights: [],
+        speakers: []
+    };
+
+    // Ajouter le nouvel event au tableau
+    events.push(newEvent);
+
+    // Réafficher les events
+    eventsGrid.innerHTML = ""; 
+    displayEvents(categorySelect.value);
+
+    // Fermer le modal
+    closeCreateEventModal();
+    form.reset();
+});
+
+
+
+
+
+
+
+
 </script>
     </body>
 </html>
