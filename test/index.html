@@ -1,0 +1,68 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Résolution d'une équation du second degré : ax² + bx + c = 0</h2>
+    <!-- create a -->
+    <label for="a">Entrez a :</label>
+    <input type="number" name="a" id="a" step="any"><br><br>
+       <!-- create b -->
+    <label for="a">Entrez b:</label>
+    <input type="number" name="b" id="b" step="any"><br><br>
+    <!-- create c -->
+    <label for="c">Entrez c :</label>
+    <input type="number" name="c" id="c" step="any"><br><br>
+    
+
+    <button onclick="resoudreEquation()">Resolve</button>
+
+    <pre id="result"></pre>
+
+    <script>
+        
+//create function 
+function resoudreEquation () {
+    // fix each id
+    const a = Number(document.getElementById('a').value);
+    const b = Number(document.getElementById('b').value);
+    const c = Number(document.getElementById('c').value);
+    const result  = document.getElementById('result');
+    let message = "";
+
+    if(a === 0 ) {
+        if(b===0){
+            message= "Pas de solution";
+        }else{
+            message = "une solution ";
+        }
+    }
+    else{
+        let delta = b * b - 4 * a *c;
+        if(delta > 0) {
+            let x1 = (-b - Math.sqrt(delta))/ 2*a
+            let x2 = (-b + Math.sqrt(delta))/ 2*a
+
+            message = `il y a  2 solutions dans R : x1= ${x1} et x2=${x2}`
+        }else if (delta === 0){
+            message = "solution double dans R : x = " + x
+        }
+         else{
+            message = "pas de solution dans R"
+        }
+
+    }
+ 
+    result.textContent = message ;
+}
+
+    </script>
+
+</body>
+</html>
